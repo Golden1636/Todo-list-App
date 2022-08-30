@@ -5,6 +5,8 @@ const list = document.querySelector('.todos');
 const initialTodos = document.querySelectorAll('.initial');
 // console.log(initialTodos);
 
+console.log('Hey!. Welcome to my to-do App');
+
 const todos = [];
 
 const generateTemplate = todo => {
