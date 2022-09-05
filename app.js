@@ -41,10 +41,13 @@ const generateTemplate = () => {
 generateTemplate();
 
 const deleteTodo = i => {
-  todos.splice(i, 1);
+  const confirmDelete = confirm('Do you want to delete this todo item?');
+  // console.log(confirmDelete);
+  if (confirmDelete) {
+    todos.splice(i, 1);
 
-  localStorage.setItem('todos-item', JSON.stringify(todos));
-
+    localStorage.setItem('todos-item', JSON.stringify(todos));
+  }
   console.log(todos);
 
   generateTemplate();
