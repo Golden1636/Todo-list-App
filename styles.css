@@ -153,20 +153,22 @@ p {
 
 /**********POPUP-WINDOW************/
 .add-changes {
-  display: block;
   margin: 20px auto;
   background-color: #5c26ff;
   color: whitesmoke;
+  width: 200px;
   border: 0;
   padding: 10px;
   border-radius: 6px;
-  font-size: 18px;
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
 }
 .add-changes:hover {
   background-color: rgb(4, 151, 11);
   color: rgb(8, 8, 8);
 }
+/* textarea {
+
+} */
 .popup-wrapper {
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -188,15 +190,20 @@ p {
 }
 
 .popup-text {
+  border: 1px solid #ced4da;
   display: block;
   margin: 0 auto;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-radius: 6px;
+  border-radius: 2px;
   margin-top: 10px;
-  background-color: #dee2e6;
+  background-color: #f1f3f5;
+  padding: 4px;
+  width: 200px;
+  height: 70px;
+  outline: none;
 }
-.popup-text:focus {
+textarea:focus {
   border: 2px solid green;
 }
 
