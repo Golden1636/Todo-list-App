@@ -7,6 +7,7 @@ const popup = document.querySelector('.popup-wrapper');
 const popupForm = document.querySelector('.popup-form');
 const popupId = document.getElementById('userId');
 const notification = document.querySelector('.edit-notif');
+notification.classList.remove('active');
 // console.log(initialTodos);
 
 console.log('Hey!. Welcome to my to-do App');
