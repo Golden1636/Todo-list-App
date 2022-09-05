@@ -103,14 +103,68 @@ input[type='text']:hover {
   cursor: pointer;
   color: red;
 }
-/* .delete {
+
+/* EDIT button */
+.delete-edit {
+  /* position: relative; */
+}
+.edit {
+  color: #561dff;
+  /* position: absolute; */
+  margin-left: 25px;
+}
+.edit:hover {
+  color: rgb(57, 255, 106);
+}
+
+/**********POPUP-WINDOW************/
+.add-changes {
+  display: block;
+  margin: 20px auto;
+  background-color: #5c26ff;
+  color: whitesmoke;
+  border: 0;
+  padding: 10px;
+}
+
+.popup-wrapper {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.popup {
+  text-align: center;
+  width: 100%;
+  max-width: 350px;
+  margin: 10% auto;
+  padding: 20px;
+  background-color: white;
+  position: relative;
+}
+
+.popup-close {
+  position: absolute;
+  top: 5px;
+  right: 8px;
   cursor: pointer;
-  color: red;
-} */
+}
 /************************/
 @media screen and (max-width: 400px) {
   .container {
     width: 350px;
     margin: 3rem auto;
+  }
+  .todo-container {
+    font-size: 11px;
+  }
+  .edit {
+    color: #5c26ff;
+    /* position: absolute; */
+    margin-left: 20px;
   }
 }
