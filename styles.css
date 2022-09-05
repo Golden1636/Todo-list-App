@@ -20,7 +20,18 @@ body {
   background-color: rgb(255, 255, 255);
   border-radius: 12px;
   box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.1);
+  /* overflow: auto; */
+  padding-bottom: 5px;
+}
+.todo-environment {
+  max-width: 490px;
+  height: 280px;
+  margin: 0 auto;
+  background-color: rgb(255, 255, 255);
+  /* border-radius: 12px; */
+  /* box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.1); */
   overflow: auto;
+  margin-top: 0;
 }
 
 header {
@@ -70,7 +81,7 @@ input[type='text']:hover {
 }
 
 .todo-container {
-  width: 79%;
+  width: 80%;
   margin: 2% auto;
 }
 
@@ -105,8 +116,11 @@ input[type='text']:hover {
 }
 
 /* EDIT button */
-.delete-edit {
-  /* position: relative; */
+.delete-edit-btn {
+  outline: none;
+  border: none;
+  background-color: #e9ecef;
+  font-size: 18px;
 }
 .edit {
   color: #561dff;
@@ -115,6 +129,34 @@ input[type='text']:hover {
 }
 .edit:hover {
   color: rgb(57, 255, 106);
+}
+/* ***EDITED NOTIFICATION** */
+.edit-notif {
+  /* margin-top: 1px; */
+  /* position: fixed; */
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  padding: 12px;
+  width: 300px;
+  margin: 0 auto;
+  border-radius: 6px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+  margin-top: 100%;
+  transition: all 0.2s;
+}
+.active {
+  margin-top: 0;
+}
+p {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 17px;
+  color: white;
+}
+.fa-circle-check {
+  font-size: 24px;
+  color: white;
 }
 
 /**********POPUP-WINDOW************/
@@ -160,11 +202,22 @@ input[type='text']:hover {
     margin: 3rem auto;
   }
   .todo-container {
-    font-size: 11px;
+    font-size: 14px;
   }
   .edit {
     color: #5c26ff;
     /* position: absolute; */
     margin-left: 20px;
+  }
+  .delete-edit-btn {
+    font-size: 15px;
+  }
+  .edit-notif {
+    width: 270px;
+    margin: 0 auto;
+    border-radius: 6px;
+  }
+  p {
+    font-size: 16px;
   }
 }

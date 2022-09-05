@@ -5,89 +5,84 @@ const list = document.querySelector('.todos');
 const initialTodos = document.querySelectorAll('.initial');
 const popup = document.querySelector('.popup-wrapper');
 const popupForm = document.querySelector('.popup-form');
-
+const popupId = document.getElementById('userId');
+const notification = document.querySelector('.edit-notif');
 // console.log(initialTodos);
 
 console.log('Hey!. Welcome to my to-do App');
 // localStorage.clear();
-const todos = [];
+let todos = JSON.parse(localStorage.getItem('todos-item'));
 
-const generateTemplate = todo => {
-  const html = `
-  <li class="todo-item initial">
-    <div class="btn-todo-item">
-      <span><button class="todo-item-btn"></button></span>
-      <span>${todo}</span>
-    </div>
-    <div class="delete-edit">
-      <i class="far fa-trash-alt delete"></i>
-      <i class="fa-regular fa-pen-to-square edit"></i>
-    </div>
-  </li>`;
+if (!todos) {
+  todos = [];
+}
+let html = '';
+console.log(todos);
 
-  todos.push(todo);
-
-  initialTodos.forEach(item => item.classList.add('hidden'));
-
-  list.innerHTML += html;
-};
-
-const init = function () {
-  const stored = localStorage.getItem('todo-items');
-  const storedArray = JSON.parse(stored);
-  console.log(storedArray);
-
-  if (storedArray?.length) {
-    storedArray.forEach(todo => {
-      generateTemplate(todo);
+const generateTemplate = () => {
+  html = '';
+  list.innerHTML = '';
+  if (todos.length) {
+    console.log(todos);
+    todos.forEach((todoObj, i) => {
+      console.log(todos);
+      html = `
+      <li class="todo-item initial">
+     <div class="btn-todo-item">
+     <span><button class="todo-item-btn"></button></span>
+     <span>${todoObj.todoText}</span>
+     </div>
+     <div class="delete-edit">
+     <button class='delete-edit-btn' onclick='deleteTodo(${i})'><i class="far fa-trash-alt delete"></i></button>
+     <button class='delete-edit-btn'  onclick='showPopUp(${i})'><i class="fa-regular fa-pen-to-square edit"></i></button>
+     </div>
+     </li>`;
+      list.innerHTML += html;
     });
-  }
+  } else list.innerHTML = html;
 };
-init();
+
+generateTemplate();
+
+const deleteTodo = i => {
+  todos.splice(i, 1);
+
+  localStorage.setItem('todos-item', JSON.stringify(todos));
+
+  console.log(todos);
+
+  generateTemplate();
+};
+
+const addTodo = function () {
+  todos[todos.length] = {
+    todoText: addForm.add.value.trim(),
+  };
+
+  localStorage.setItem('todos-item', JSON.stringify(todos));
+
+  generateTemplate();
+};
 
 addForm.addEventListener('submit', e => {
   e.preventDefault();
-  const todo = addForm.add.value.trim();
+  const text = addForm.add.value.trim();
 
-  if (todo) {
-    generateTemplate(todo);
+  if (text) {
+    addTodo();
     addForm.reset();
   } else {
     addForm.reset();
     alert('you need to type in something for it to be added to your list');
   }
-  console.log(todos);
-  //set local storage
-  // localStorage.setItem('todo-items', JSON.stringify(todos));
 });
 
-// delete todos
-list.addEventListener('click', e => {
-  if (e.target.classList.contains('delete')) {
-    e.target.closest('.todo-item').remove();
-    // e.target.parentElement.remove();
-    // const deletedTodo = e.target.parentElement.textContent.trim();
-    const deletedTodo = e.target.closest('.todo-item').textContent.trim();
-
-    // console.log(typeof deletedTodo, deletedTodo);
-
-    const filteredTodos = todos.filter(text => text !== deletedTodo);
-
-    //set local storage
-    localStorage.setItem('todo-items', JSON.stringify(filteredTodos));
-    // init();
-    console.log(filteredTodos);
-  }
-});
-
-//EDIT TODO
-
-//CLICK EVENT THAT DISPLAYS THE POPUP WINDOW
-list.addEventListener('click', e => {
-  // console.log(e.target.classList.contains('edit'));
-
-  if (e.target.classList.contains('edit')) popup.style.display = 'block';
-});
+const showPopUp = i => {
+  popup.style.display = 'block';
+  console.log(i);
+  popupForm.editText.value = todos[i].todoText;
+  popupId.value = i;
+};
 
 const hidePopup = () => (popup.style.display = 'none');
 
@@ -98,10 +93,27 @@ popup.addEventListener('click', e => {
 });
 
 // SUBMIT EVENT ON THE POPUP WINDOW
+const showNotification = () => {
+  notification.classList.add('active');
+  setTimeout(() => {
+    notification.classList.remove('active');
+  }, 3000);
+};
 popupForm.addEventListener('submit', e => {
   e.preventDefault();
-  const matilda = popupForm.editText.value.trim();
-  console.log(matilda);
 
   hidePopup();
+
+  const openedPopupId = popupId.value;
+  // console.log(typeof openedPopupId);
+  const editedTodo = {
+    todoText: popupForm.editText.value,
+  };
+  todos[openedPopupId] = editedTodo;
+  console.log(todos);
+
+  localStorage.setItem('todos-item', JSON.stringify(todos));
+
+  generateTemplate();
+  showNotification();
 });

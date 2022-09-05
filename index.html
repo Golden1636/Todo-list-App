@@ -23,28 +23,13 @@
       <div class="horizontal-line">
         <hr />
       </div>
-      <ul class="todo-container todos">
-        <li class="todo-item initial">
-          <div class="btn-todo-item">
-            <span><button class="todo-item-btn"></button></span>
-            <span>Example: Climb mount everest</span>
-          </div>
-          <div class="delete-edit">
-            <i class="far fa-trash-alt delete"></i>
-            <i class="fa-regular fa-pen-to-square edit"></i>
-          </div>
-        </li>
-        <li class="todo-item initial">
-          <div>
-            <span><button class="todo-item-btn"></button></span>
-            <span>Example: Pay a short visit to the moon</span>
-          </div>
-          <div class="delete-edit">
-            <i class="far fa-trash-alt delete"></i>
-            <i class="fa-regular fa-pen-to-square edit"></i>
-          </div>
-        </li>
-      </ul>
+      <div class="todo-environment">
+        <ul class="todo-container todos"></ul>
+      </div>
+      <div class="edit-notif">
+        <i class="fa-sharp fa-solid fa-circle-check"></i>
+        <p>Successfully edited your task</p>
+      </div>
     </div>
 
     <!-- POPUP-WINDOW -->
@@ -54,6 +39,7 @@
         <div class="popup-content">
           <form class="popup-form">
             <h2 class="popup-heading">Edit your task</h2>
+            <input type="hidden" id="userId" />
             <input type="text" name="editText" />
             <button class="add-changes" input type="submit">Add changes</button>
           </form>
