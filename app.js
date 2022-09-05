@@ -7,26 +7,21 @@ const popup = document.querySelector('.popup-wrapper');
 const popupForm = document.querySelector('.popup-form');
 const popupId = document.getElementById('userId');
 const notification = document.querySelector('.edit-notif');
-notification.classList.remove('active');
-// console.log(initialTodos);
 
 console.log('Hey!. Welcome to my to-do App');
-// localStorage.clear();
+
 let todos = JSON.parse(localStorage.getItem('todos-item'));
 
 if (!todos) {
   todos = [];
 }
 let html = '';
-console.log(todos);
 
 const generateTemplate = () => {
   html = '';
   list.innerHTML = '';
   if (todos.length) {
-    console.log(todos);
     todos.forEach((todoObj, i) => {
-      console.log(todos);
       html = `
       <li class="todo-item initial">
      <div class="btn-todo-item">
@@ -80,7 +75,6 @@ addForm.addEventListener('submit', e => {
 
 const showPopUp = i => {
   popup.style.display = 'block';
-  console.log(i);
   popupForm.editText.value = todos[i].todoText;
   popupId.value = i;
 };
@@ -106,12 +100,11 @@ popupForm.addEventListener('submit', e => {
   hidePopup();
 
   const openedPopupId = popupId.value;
-  // console.log(typeof openedPopupId);
+
   const editedTodo = {
     todoText: popupForm.editText.value,
   };
   todos[openedPopupId] = editedTodo;
-  console.log(todos);
 
   localStorage.setItem('todos-item', JSON.stringify(todos));
 

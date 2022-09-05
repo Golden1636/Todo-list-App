@@ -6,7 +6,6 @@
 .fa-light {
   color: #845ef7;
   font-weight: bolder;
-  /* width: 50px; */
 }
 body {
   font-family: sans-serif;
@@ -20,7 +19,6 @@ body {
   background-color: rgb(255, 255, 255);
   border-radius: 12px;
   box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.1);
-  /* overflow: auto; */
   padding-bottom: 5px;
 }
 .todo-environment {
@@ -28,8 +26,6 @@ body {
   height: 280px;
   margin: 0 auto;
   background-color: rgb(255, 255, 255);
-  /* border-radius: 12px; */
-  /* box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.1); */
   overflow: auto;
   margin-top: 0;
 }
@@ -42,7 +38,6 @@ header {
 .add {
   display: flex;
   justify-content: center;
-  /* text-align: center; */
   margin: 1rem;
 }
 input[type='text'] {
@@ -76,7 +71,6 @@ input[type='text']:hover {
 
 .horizontal-line {
   width: 80%;
-  /* text-align: center; */
   margin: 0 10%;
 }
 
@@ -124,7 +118,6 @@ input[type='text']:hover {
 }
 .edit {
   color: #561dff;
-  /* position: absolute; */
   margin-left: 25px;
 }
 .edit:hover {
@@ -132,8 +125,6 @@ input[type='text']:hover {
 }
 /* ***EDITED NOTIFICATION** */
 .edit-notif {
-  /* margin-top: 1px; */
-  /* position: fixed; */
   background-color: green;
   display: flex;
   justify-content: center;
@@ -144,6 +135,7 @@ input[type='text']:hover {
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
   margin-top: 100%;
   transition: all 0.2s;
+  /* margin-top: 2px; */
 }
 .active {
   margin-top: 0;
@@ -167,8 +159,14 @@ p {
   color: whitesmoke;
   border: 0;
   padding: 10px;
+  border-radius: 6px;
+  font-size: 18px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
 }
-
+.add-changes:hover {
+  background-color: rgb(4, 151, 11);
+  color: rgb(8, 8, 8);
+}
 .popup-wrapper {
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -187,6 +185,19 @@ p {
   padding: 20px;
   background-color: white;
   position: relative;
+}
+
+.popup-text {
+  display: block;
+  margin: 0 auto;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-radius: 6px;
+  margin-top: 10px;
+  background-color: #dee2e6;
+}
+.popup-text:focus {
+  border: 2px solid green;
 }
 
 .popup-close {
@@ -215,9 +226,12 @@ p {
   .edit-notif {
     width: 270px;
     margin: 0 auto;
-    border-radius: 6px;
+    margin-top: 100%;
   }
   p {
     font-size: 16px;
+  }
+  .active {
+    margin-top: 1px;
   }
 }
