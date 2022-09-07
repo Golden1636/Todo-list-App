@@ -280,8 +280,8 @@ p {
   transition: width 0.4s ease-in-out;
 }
 .search:focus {
-  border-left: 4px solid #5f3dc4;
-  border-right: 4px solid #5f3dc4;
+  border-left: 4px solid forestgreen;
+  border-right: 4px solid forestgreen;
   border-bottom: 2px solid #d0bfff;
   width: 350px;
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1);
@@ -294,11 +294,12 @@ p {
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #6741d9;
+  background-color: forestgreen;
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background-color: green;
+  background-color: rgb(93, 245, 93);
+  /* border-radius: 10px; */
 }
 
 /************************/
@@ -332,5 +333,8 @@ p {
   }
   .search:focus {
     width: 270px;
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
   }
 }
