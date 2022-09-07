@@ -8,6 +8,7 @@ const popupId = document.getElementById('userId');
 const notification = document.querySelector('.edit-notif');
 const deleteContainer = document.querySelector('.delete-wrapper');
 const deleteModal = document.querySelector('.delete-modal');
+const search = document.querySelector('.search');
 
 console.log('Hey!. Welcome to my to-do App');
 
@@ -136,4 +137,19 @@ deleteContainer.addEventListener('click', e => {
     showHideDelete();
     location.reload();
   }
+});
+
+const filterTodos = term => {
+  Array.from(list.children)
+    .filter(todo => !todo.textContent.trim().toLowerCase().includes(term))
+    .forEach(todo => todo.classList.add('filtered'));
+
+  Array.from(list.children)
+    .filter(todo => todo.textContent.trim().toLowerCase().includes(term))
+    .forEach(todo => todo.classList.remove('filtered'));
+};
+
+search.addEventListener('keyup', () => {
+  const term = search.value.trim().toLowerCase();
+  filterTodos(term);
 });
