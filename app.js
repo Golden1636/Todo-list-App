@@ -2,11 +2,12 @@
 
 const addForm = document.querySelector('.add');
 const list = document.querySelector('.todos');
-const initialTodos = document.querySelectorAll('.initial');
 const popup = document.querySelector('.popup-wrapper');
 const popupForm = document.querySelector('.popup-form');
 const popupId = document.getElementById('userId');
 const notification = document.querySelector('.edit-notif');
+const deleteContainer = document.querySelector('.delete-wrapper');
+const deleteModal = document.querySelector('.delete-modal');
 
 console.log('Hey!. Welcome to my to-do App');
 
@@ -17,7 +18,7 @@ if (!todos) {
 }
 let html = '';
 
-const generateTemplate = () => {
+const generateTemplate = function () {
   html = '';
   list.innerHTML = '';
   if (todos.length) {
@@ -40,17 +41,26 @@ const generateTemplate = () => {
 
 generateTemplate();
 
-const deleteTodo = i => {
-  const confirmDelete = confirm('Do you want to delete this todo item?');
-  // console.log(confirmDelete);
-  if (confirmDelete) {
-    todos.splice(i, 1);
+// FUNCTION THAT SHOWS THE DELETE MODAL
+const showHideDelete = () => deleteContainer.classList.toggle('show');
 
-    localStorage.setItem('todos-item', JSON.stringify(todos));
-  }
-  console.log(todos);
+const deleteTodo = function (i) {
+  showHideDelete();
 
-  generateTemplate();
+  deleteModal.addEventListener('click', e => {
+    if (e.target.classList.contains('btn-yes')) {
+      console.log('yes!');
+      todos.splice(i, 1);
+      localStorage.setItem('todos-item', JSON.stringify(todos));
+      console.log(todos);
+      generateTemplate();
+      showHideDelete();
+      location.reload();
+    }
+    // todos.splice(i, 1);
+    // localStorage.setItem('todos-item', JSON.stringify(todos));
+    // generateTemplate();
+  });
 };
 
 const addTodo = function () {
@@ -84,7 +94,7 @@ const showPopUp = i => {
 
 const hidePopup = () => (popup.style.display = 'none');
 
-//CLICK EVENT THAT HIDES THE POPUP WINDOW
+// CLICK EVENT THAT HIDES THE POPUP WINDOW
 popup.addEventListener('click', e => {
   if (e.target.classList.contains('popup-close')) hidePopup();
   if (e.target.classList.contains('popup-wrapper')) hidePopup();
@@ -97,6 +107,8 @@ const showNotification = () => {
     notification.classList.remove('active');
   }, 3000);
 };
+
+// EVENT HANDLER FOR WHEN THE USER EDIT THE TODO ITEM
 popupForm.addEventListener('submit', e => {
   e.preventDefault();
 
@@ -113,4 +125,15 @@ popupForm.addEventListener('submit', e => {
 
   generateTemplate();
   showNotification();
+});
+
+// CLICK EVENT THAT HIDES THE DELETE MODAL
+deleteContainer.addEventListener('click', e => {
+  const x = e.target.classList.contains('delete-close');
+  const y = e.target.classList.contains('delete-wrapper');
+  const z = e.target.classList.contains('btn-no');
+  if (x || y || z) {
+    showHideDelete();
+    location.reload();
+  }
 });

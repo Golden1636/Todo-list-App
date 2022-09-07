@@ -40,7 +40,7 @@ header {
   justify-content: center;
   margin: 1rem;
 }
-input[type='text'] {
+.add-input {
   background-color: #e9ecef;
   padding: 10px;
   border: none;
@@ -169,7 +169,8 @@ p {
 /* textarea {
 
 } */
-.popup-wrapper {
+.popup-wrapper,
+.delete-wrapper {
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -179,7 +180,8 @@ p {
   display: none;
 }
 
-.popup {
+.popup,
+.delete-modal {
   text-align: center;
   width: 100%;
   max-width: 350px;
@@ -207,11 +209,45 @@ p {
   border: 2px solid green;
 }
 
-.popup-close {
+.popup-close,
+.delete-close {
   position: absolute;
   top: 5px;
   right: 8px;
   cursor: pointer;
+}
+.delete-heading {
+  color: #444;
+}
+.delete-yes-no {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 10px;
+}
+.btn {
+  border: none;
+  border-radius: 6px;
+  padding: 6px;
+  background-color: #7048e8;
+  width: 50px;
+  color: rgb(181, 247, 247);
+  text-align: center;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1);
+}
+.btn-yes {
+  background-color: orange;
+  color: rgb(77, 50, 1);
+}
+.btn-yes:hover {
+  background-color: orangered;
+  color: white;
+}
+.btn-no:hover {
+  background-color: forestgreen;
+}
+.show {
+  display: block;
 }
 /************************/
 @media screen and (max-width: 400px) {
@@ -233,7 +269,7 @@ p {
   .edit-notif {
     width: 270px;
     margin: 0 auto;
-    margin-top: 100%;
+    margin-top: 1000%;
   }
   p {
     font-size: 16px;
