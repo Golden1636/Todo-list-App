@@ -14,7 +14,8 @@ body {
 
 .container {
   max-width: 500px;
-  height: 500px;
+  /* height: 500px; */
+  height: 80vh;
   margin: 2rem auto;
   background-color: rgb(255, 255, 255);
   border-radius: 12px;
@@ -23,7 +24,8 @@ body {
 }
 .todo-environment {
   max-width: 490px;
-  height: 230px;
+  /* height: 230px; */
+  height: 40vh;
   margin: 0 auto;
   background-color: rgb(255, 255, 255);
   overflow: auto;
@@ -125,20 +127,23 @@ input[type='text']:hover {
 }
 /* ***EDITED NOTIFICATION** */
 .edit-notif {
+  position: fixed;
   background-color: green;
   display: flex;
   justify-content: center;
   padding: 12px;
   width: 300px;
   margin: 0 auto;
+  left: 50%;
+  transform: translate(-50%);
   border-radius: 6px;
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
-  margin-top: 100%;
+  margin-top: -100%;
   transition: all 0.2s;
   /* margin-top: 2px; */
 }
 .active {
-  margin-top: 0;
+  margin-top: -2rem;
 }
 p {
   display: inline-block;
@@ -292,26 +297,21 @@ p {
     font-size: 14px;
   }
   .todo-environment {
-    height: 250px;
+    /* height: 250px; */
+    height: 35vh;
   }
   .edit {
     color: #5c26ff;
-    /* position: absolute; */
     margin-left: 20px;
   }
   .delete-edit-btn {
     font-size: 15px;
   }
-  .edit-notif {
-    width: 270px;
-    margin: 0 auto;
-    margin-top: 1000%;
-  }
   p {
     font-size: 16px;
   }
   .active {
-    margin-top: 1px;
+    margin-top: -2rem;
   }
   .search {
     width: 185px;
