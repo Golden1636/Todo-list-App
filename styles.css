@@ -223,7 +223,7 @@ p {
 .delete-yes-no {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  /* gap: 30px; */
   margin-top: 10px;
 }
 .btn {
@@ -237,6 +237,7 @@ p {
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1);
 }
 .btn-yes {
+  margin-right: 30px;
   background-color: orange;
   color: rgb(77, 50, 1);
 }
