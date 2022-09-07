@@ -139,6 +139,7 @@ deleteContainer.addEventListener('click', e => {
   }
 });
 
+//SEARCH FEATURE
 const filterTodos = term => {
   Array.from(list.children)
     .filter(todo => !todo.textContent.trim().toLowerCase().includes(term))

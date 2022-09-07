@@ -259,7 +259,6 @@ p {
   margin-top: 10px;
   margin-left: 50%;
   width: 190px;
-  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1);
   transform: translate(-50%);
   background-color: #e9ecef;
   padding: 10px 10px 10px 0;
@@ -279,6 +278,7 @@ p {
   border-right: 4px solid #5f3dc4;
   border-bottom: 2px solid #d0bfff;
   width: 350px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1);
 }
 
 /************************/
