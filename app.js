@@ -7,7 +7,8 @@ const popupForm = document.querySelector('.popup-form');
 const popupId = document.getElementById('userId');
 const notification = document.querySelector('.edit-notif');
 const deleteContainer = document.querySelector('.delete-wrapper');
-const deleteModal = document.querySelector('.delete-modal');
+const deleteId = document.getElementById('id');
+
 const search = document.querySelector('.search');
 
 console.log('Hey!. Welcome to my to-do App');
@@ -28,13 +29,14 @@ const generateTemplate = function () {
       <li class="todo-item initial">
      <div class="btn-todo-item">
      <span><button class="todo-item-btn"></button></span>
-     <span>${todoObj.todoText}</span>
+     <span class="todo-text-width" >${todoObj.todoText}</span>
      </div>
      <div class="delete-edit">
-     <button class='delete-edit-btn' onclick='deleteTodo(${i})'><i class="far fa-trash-alt delete"></i></button>
+     <button class='delete-edit-btn' onclick='toggleDeleteModal(${i})'><i class="fa-solid fa-trash-can delete"></i></button>
      <button class='delete-edit-btn'  onclick='showPopUp(${i})'><i class="fa-regular fa-pen-to-square edit"></i></button>
      </div>
      </li>`;
+
       list.innerHTML += html;
     });
   } else list.innerHTML = html;
@@ -42,26 +44,17 @@ const generateTemplate = function () {
 
 generateTemplate();
 
+const deleteTodo = function () {
+  todos.splice(deleteId.id, 1);
+  localStorage.setItem('todos-item', JSON.stringify(todos));
+  toggleDeleteModal();
+  generateTemplate();
+};
+
 // FUNCTION THAT SHOWS THE DELETE MODAL
-const showHideDelete = () => deleteContainer.classList.toggle('show');
-
-const deleteTodo = function (i) {
-  showHideDelete();
-
-  deleteModal.addEventListener('click', e => {
-    if (e.target.classList.contains('btn-yes')) {
-      console.log('yes!');
-      todos.splice(i, 1);
-      localStorage.setItem('todos-item', JSON.stringify(todos));
-      console.log(todos);
-      generateTemplate();
-      showHideDelete();
-      location.reload();
-    }
-    // todos.splice(i, 1);
-    // localStorage.setItem('todos-item', JSON.stringify(todos));
-    // generateTemplate();
-  });
+const toggleDeleteModal = i => {
+  deleteContainer.classList.toggle('show');
+  deleteId.id = i;
 };
 
 const addTodo = function () {
@@ -93,6 +86,7 @@ const showPopUp = i => {
   popupId.value = i;
 };
 
+// FUNCTION THAT HIDES THE POPUP
 const hidePopup = () => (popup.style.display = 'none');
 
 // CLICK EVENT THAT HIDES THE POPUP WINDOW
@@ -132,10 +126,9 @@ popupForm.addEventListener('submit', e => {
 deleteContainer.addEventListener('click', e => {
   const x = e.target.classList.contains('delete-close');
   const y = e.target.classList.contains('delete-wrapper');
-  const z = e.target.classList.contains('btn-no');
-  if (x || y || z) {
-    showHideDelete();
-    location.reload();
+
+  if (x || y) {
+    toggleDeleteModal();
   }
 });
 

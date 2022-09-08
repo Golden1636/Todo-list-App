@@ -81,12 +81,24 @@ input[type='text']:hover {
   margin: 2% auto;
 }
 
+.todo-text-width {
+  display: inline-block;
+  text-align: justify;
+  padding-right: 4px;
+  /* width: 278px; */
+}
+
 .todo-item-btn {
+  margin: auto 0;
   border: 1px solid #845ef7;
   width: 10px;
   height: 12px;
   margin-right: 4px;
-  margin-bottom: 4px;
+  /* margin-bottom: 4px; */
+}
+.btn-todo-item {
+  display: flex;
+  align-items: center;
 }
 .todo-item {
   display: flex;
@@ -105,13 +117,23 @@ input[type='text']:hover {
 .hidden {
   display: none;
 }
-
+.delete {
+  color: orangered;
+}
 .delete:hover {
   cursor: pointer;
-  color: red;
+  color: rgb(218, 218, 2);
+  background-color: whitesmoke;
 }
 
 /* EDIT button */
+.delete-edit {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  /* background-color: red; */
+  width: 90px;
+}
 .delete-edit-btn {
   outline: none;
   border: none;
@@ -120,7 +142,7 @@ input[type='text']:hover {
 }
 .edit {
   color: #561dff;
-  margin-left: 25px;
+  /* margin-left: 25px; */
 }
 .edit:hover {
   color: rgb(57, 255, 106);
@@ -314,6 +336,13 @@ p {
   .todo-environment {
     /* height: 250px; */
     height: 35vh;
+  }
+  .todo-text-width {
+    padding-right: 9px;
+  }
+  .delete-edit {
+    padding: 1px;
+    width: 50px;
   }
   .edit {
     color: #5c26ff;
