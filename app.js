@@ -26,16 +26,16 @@ const generateTemplate = function () {
   if (todos.length) {
     todos.forEach((todoObj, i) => {
       html = `
-      <li class="todo-item initial">
-     <div class="btn-todo-item">
-     <span><button class="todo-item-btn"></button></span>
-     <span class="todo-text-width" >${todoObj.todoText}</span>
+    <li class="todo-item initial">
+      <div class="btn-todo-item">
+        <input onclick='line(${i})' type="checkbox" class="todo-item-btn"/>
+        <span id ='${i}'class="todo-text-width" >${todoObj.todoText}</span>
+      </div>
+      <div class="delete-edit">
+        <button class='delete-edit-btn' onclick='toggleDeleteModal(${i})'><i class="fa-solid fa-trash-can delete"></i></button>
+        <button class='delete-edit-btn'  onclick='showEditModal(${i})'><i class="fa-regular fa-pen-to-square edit"></i></button>
      </div>
-     <div class="delete-edit">
-     <button class='delete-edit-btn' onclick='toggleDeleteModal(${i})'><i class="fa-solid fa-trash-can delete"></i></button>
-     <button class='delete-edit-btn'  onclick='showPopUp(${i})'><i class="fa-regular fa-pen-to-square edit"></i></button>
-     </div>
-     </li>`;
+    </li>`;
 
       list.innerHTML += html;
     });
@@ -76,11 +76,11 @@ addForm.addEventListener('submit', e => {
     addForm.reset();
   } else {
     addForm.reset();
-    alert('you need to type in something for it to be added to your list');
+    alert('you need to type in a todo for it to be added to your list');
   }
 });
 
-const showPopUp = i => {
+const showEditModal = i => {
   popup.style.display = 'block';
   popupForm.editText.value = todos[i].todoText;
   popupId.value = i;
@@ -145,5 +145,12 @@ const filterTodos = term => {
 
 search.addEventListener('keyup', () => {
   const term = search.value.trim().toLowerCase();
+
   filterTodos(term);
 });
+
+//LINE-THROUGH-FEATURE
+
+function line(i) {
+  document.getElementById(`${i}`).classList.toggle('line-through');
+}
