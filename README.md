@@ -1,3 +1,10 @@
 # Todo List Project
 
-A simple todo-list App with a delete and edit button and stores data to the browsers local storage.
+A simple todo-list App that stores data to the local storage.
+
+## Features include:
+
+- Edit button
+- Delete button
+- Search todo items
+- line-through (in line-through-feature branch)

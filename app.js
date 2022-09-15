@@ -33,7 +33,7 @@ const generateTemplate = function () {
      </div>
      <div class="delete-edit">
      <button class='delete-edit-btn' onclick='toggleDeleteModal(${i})'><i class="fa-solid fa-trash-can delete"></i></button>
-     <button class='delete-edit-btn'  onclick='showPopUp(${i})'><i class="fa-regular fa-pen-to-square edit"></i></button>
+     <button class='delete-edit-btn'  onclick='showEditModal(${i})'><i class="fa-regular fa-pen-to-square edit"></i></button>
      </div>
      </li>`;
 
@@ -80,7 +80,7 @@ addForm.addEventListener('submit', e => {
   }
 });
 
-const showPopUp = i => {
+const showEditModal = i => {
   popup.style.display = 'block';
   popupForm.editText.value = todos[i].todoText;
   popupId.value = i;
